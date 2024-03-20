@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultOSLAuthorizeRequest implements OSLAuthorizeRequest {
   @Override
-  public void authorize(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry request) {
+  public void authorize(
+      AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry
+          request) {
     request.anyRequest().authenticated();
   }
 }

@@ -1,9 +1,8 @@
 package com.opensourcelibrary.security.interaction;
 
 import com.opensourcelibrary.security.gateway.OSLCorsConfiguration;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
+import org.springframework.stereotype.Component;
 
 @Component
 public class DefaultOSLCorsConfiguration implements OSLCorsConfiguration {
