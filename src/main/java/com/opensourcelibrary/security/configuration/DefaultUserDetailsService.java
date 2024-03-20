@@ -1,0 +1,19 @@
+package com.opensourcelibrary.security.configuration;
+
+import com.opensourcelibrary.security.gateway.OSLUserDetails;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class DefaultUserDetailsService implements UserDetailsService {
+  private final OSLUserDetails oslUserDetails;
+
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    return oslUserDetails.loadUserDetails(username);
+  }
+}
