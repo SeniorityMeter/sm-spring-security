@@ -2,6 +2,7 @@ package com.opensourcelibrary.security.configuration;
 
 import com.opensourcelibrary.security.gateway.OSLAuthorizeRequest;
 import com.opensourcelibrary.security.gateway.OSLCorsConfiguration;
+import com.opensourcelibrary.security.gateway.OSLPasswordEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -29,6 +29,7 @@ public class WebSecurity {
   private final FilterToken filterToken;
   private final OSLCorsConfiguration oslCorsConfiguration;
   private final OSLAuthorizeRequest oslAuthorizeRequest;
+  private final OSLPasswordEncoder oslPasswordEncoder;
 
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration auth)
@@ -38,7 +39,7 @@ public class WebSecurity {
 
   @Bean
   public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
+    return oslPasswordEncoder.get();
   }
 
   @Bean

@@ -1,4 +1,4 @@
-package com.opensourcelibrary.security.interaction;
+package com.opensourcelibrary.security.implementation;
 
 import com.opensourcelibrary.security.gateway.OSLAuthorizeRequest;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

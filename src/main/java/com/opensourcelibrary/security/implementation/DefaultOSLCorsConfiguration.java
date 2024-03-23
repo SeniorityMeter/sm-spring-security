@@ -1,4 +1,4 @@
-package com.opensourcelibrary.security.interaction;
+package com.opensourcelibrary.security.implementation;
 
 import com.opensourcelibrary.security.gateway.OSLCorsConfiguration;
 import java.util.List;
