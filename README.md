@@ -37,8 +37,6 @@ ___
 
 #### 3. Add the following properties to your `application.yaml` file:
 
-##### a - Configuration for AWS S3:
-
 ```yaml
 spring:
   security:
@@ -84,3 +82,34 @@ ___
 ##### a - Provide authorization requests with implements the `OSLAuthorizeRequest` interface
 ##### b - Provide cors configuration with implements the `OSLCorsConfiguration` interface
 ##### c - Provide the password encoder with implements the `OSLPasswordEncoder` interface
+
+___
+
+#### 7. Use the `AuthenticateUser` bean to authenticate the user:
+
+```java
+private final AuthenticateUser authenticateUser;
+
+authenticateUser.authenticate("username", "password");
+```
+___
+
+#### 8. Use the `GenerateToken` bean to generate a token:
+
+```java
+private final GenerateToken generateToken;
+
+final var tokenInput = Input.builder()
+    .subject("username")
+    .expiresAt(Instant.now().plusSeconds(3600))
+    .build();
+
+final var token = generateToken.generateToken(tokenInput);
+```
+___
+
+#### 9. Use the `LoggedUser` static to get the logged user:
+
+```java
+final var username = LoggedUser.getUsername();
+```

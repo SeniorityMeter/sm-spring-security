@@ -10,12 +10,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GenerateToken {
+  public static final String OSL_SECURITY_ISSUER = "OSL_SECURITY";
+
   @Value("${spring.security.jwt.secret}")
   private String secret;
 
   public String execute(final Input input) {
     return JWT.create()
-        .withIssuer(input.getIssuer())
+        .withIssuer(OSL_SECURITY_ISSUER)
         .withSubject(input.getSubject())
         .withExpiresAt(input.getExpiresAt())
         .sign(Algorithm.HMAC512(secret));
@@ -24,7 +26,6 @@ public class GenerateToken {
   @Data
   @Builder
   public static class Input {
-    private String issuer;
     private String subject;
     private Instant expiresAt;
   }
