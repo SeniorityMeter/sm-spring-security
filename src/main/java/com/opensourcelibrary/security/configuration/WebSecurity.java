@@ -25,6 +25,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurity {
+  private static final String[] PERMITS_REQUEST_MATCHERS = {
+    "/swagger-ui/**", "/v3/api-docs/**", "/v3/api-docs.yaml", "/actuator/**",
+  };
 
   private final FilterToken filterToken;
   private final OSLCorsConfiguration oslCorsConfiguration;
@@ -56,8 +59,8 @@ public class WebSecurity {
           AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry>
       authorizationManagerHttpRequestsCustomizer() {
     return req -> {
+      req.requestMatchers(PERMITS_REQUEST_MATCHERS).permitAll();
       oslAuthorizeRequest.authorize(req);
-      req.anyRequest().authenticated();
     };
   }
 
