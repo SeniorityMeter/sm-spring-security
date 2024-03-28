@@ -1,12 +1,12 @@
 package com.opensourcelibrary.security.implementation;
 
-import com.opensourcelibrary.security.gateway.OSLPasswordEncoder;
+import com.opensourcelibrary.security.gateway.SMPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DefaultOSLPasswordEncoder implements OSLPasswordEncoder {
+public class DefaultSMPasswordEncoder implements SMPasswordEncoder {
 
   @Override
   public PasswordEncoder get() {

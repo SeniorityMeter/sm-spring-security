@@ -2,7 +2,7 @@ package com.opensourcelibrary.security.gateway;
 
 import java.util.List;
 
-public interface OSLCorsConfiguration {
+public interface SMCorsConfiguration {
   List<String> allowOrigins();
 
   List<String> allowMethods();

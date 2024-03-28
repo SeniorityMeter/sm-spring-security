@@ -1,6 +1,6 @@
 package com.opensourcelibrary.security.configuration;
 
-import com.opensourcelibrary.security.gateway.OSLUserDetails;
+import com.opensourcelibrary.security.gateway.SMUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class DefaultUserDetailsService implements UserDetailsService {
-  private final OSLUserDetails oslUserDetails;
+  private final SMUserDetails SMUserDetails;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    return oslUserDetails.loadUserDetails(username);
+    return SMUserDetails.loadUserDetails(username);
   }
 }

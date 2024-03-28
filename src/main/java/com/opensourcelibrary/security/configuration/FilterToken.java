@@ -1,6 +1,6 @@
 package com.opensourcelibrary.security.configuration;
 
-import com.opensourcelibrary.security.gateway.OSLUserDetails;
+import com.opensourcelibrary.security.gateway.SMUserDetails;
 import com.opensourcelibrary.security.utility.ValidateToken;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -15,7 +15,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @RequiredArgsConstructor
 public class FilterToken extends OncePerRequestFilter {
   private final ValidateToken validateToken;
-  private final OSLUserDetails oslUserDetails;
+  private final SMUserDetails userDetails;
 
   @Override
   protected void doFilterInternal(
@@ -30,7 +30,7 @@ public class FilterToken extends OncePerRequestFilter {
       var token = authorizationHeader.replace("Bearer ", "");
       var subject = this.validateToken.getSubject(token);
 
-      var userDetails = oslUserDetails.loadUserDetails(subject);
+      var userDetails = this.userDetails.loadUserDetails(subject);
 
       var authentication =
           new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

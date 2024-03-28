@@ -1,8 +1,8 @@
 package com.opensourcelibrary.security.configuration;
 
-import com.opensourcelibrary.security.gateway.OSLAuthorizeRequest;
-import com.opensourcelibrary.security.gateway.OSLCorsConfiguration;
-import com.opensourcelibrary.security.gateway.OSLPasswordEncoder;
+import com.opensourcelibrary.security.gateway.SMAuthorizeRequest;
+import com.opensourcelibrary.security.gateway.SMCorsConfiguration;
+import com.opensourcelibrary.security.gateway.SMPasswordEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,9 +30,9 @@ public class WebSecurity {
   };
 
   private final FilterToken filterToken;
-  private final OSLCorsConfiguration oslCorsConfiguration;
-  private final OSLAuthorizeRequest oslAuthorizeRequest;
-  private final OSLPasswordEncoder oslPasswordEncoder;
+  private final SMCorsConfiguration corsConfiguration;
+  private final SMAuthorizeRequest authorizeRequest;
+  private final SMPasswordEncoder passwordEncoder;
 
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration auth)
@@ -42,7 +42,7 @@ public class WebSecurity {
 
   @Bean
   public PasswordEncoder passwordEncoder() {
-    return oslPasswordEncoder.get();
+    return passwordEncoder.get();
   }
 
   @Bean
@@ -60,16 +60,16 @@ public class WebSecurity {
       authorizationManagerHttpRequestsCustomizer() {
     return req -> {
       req.requestMatchers(PERMITS_REQUEST_MATCHERS).permitAll();
-      oslAuthorizeRequest.authorize(req);
+      authorizeRequest.authorize(req);
     };
   }
 
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration corsConfiguration = new CorsConfiguration();
-    corsConfiguration.setAllowedOrigins(oslCorsConfiguration.allowOrigins());
-    corsConfiguration.setAllowedMethods(oslCorsConfiguration.allowMethods());
-    corsConfiguration.setAllowedHeaders(oslCorsConfiguration.allowHeaders());
+    corsConfiguration.setAllowedOrigins(this.corsConfiguration.allowOrigins());
+    corsConfiguration.setAllowedMethods(this.corsConfiguration.allowMethods());
+    corsConfiguration.setAllowedHeaders(this.corsConfiguration.allowHeaders());
 
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", corsConfiguration);

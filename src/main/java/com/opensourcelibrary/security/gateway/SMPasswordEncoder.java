@@ -2,6 +2,6 @@ package com.opensourcelibrary.security.gateway;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-public interface OSLPasswordEncoder {
+public interface SMPasswordEncoder {
   PasswordEncoder get();
 }

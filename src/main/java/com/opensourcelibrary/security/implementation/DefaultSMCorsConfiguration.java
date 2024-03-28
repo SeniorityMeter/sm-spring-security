@@ -1,11 +1,11 @@
 package com.opensourcelibrary.security.implementation;
 
-import com.opensourcelibrary.security.gateway.OSLCorsConfiguration;
+import com.opensourcelibrary.security.gateway.SMCorsConfiguration;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DefaultOSLCorsConfiguration implements OSLCorsConfiguration {
+public class DefaultSMCorsConfiguration implements SMCorsConfiguration {
 
   @Override
   public List<String> allowOrigins() {
