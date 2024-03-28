@@ -42,7 +42,7 @@ private final SMPasswordEncoder passwordEncoder;
 passwordEncoder.encode(password);
 ```
 
-##### b - Implement the `OSLUserDetails` interface:
+##### b - Implement the `SMUserDetails` interface:
 ```java
 public class SMUserDetailsImpl implements SMUserDetails {
   private final UserRepository userRepository; // 
