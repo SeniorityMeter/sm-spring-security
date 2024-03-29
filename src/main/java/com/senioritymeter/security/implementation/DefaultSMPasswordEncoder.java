@@ -1,6 +1,6 @@
-package com.opensourcelibrary.security.implementation;
+package com.senioritymeter.security.implementation;
 
-import com.opensourcelibrary.security.gateway.SMPasswordEncoder;
+import com.senioritymeter.security.gateway.SMPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

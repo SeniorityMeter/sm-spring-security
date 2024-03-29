@@ -1,4 +1,4 @@
-package com.opensourcelibrary.security.utility;
+package com.senioritymeter.security.utility;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

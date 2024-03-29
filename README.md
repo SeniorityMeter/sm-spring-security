@@ -28,7 +28,7 @@ ___
 spring:
   security:
     jwt:
-      secret: ${SPRING_SECURITY_JWT_SECRET:spring-security-jwt-secret}
+      secret: ${SECURITY_JWT_SECRET:security-jwt-secret}
 ```
 ___
 

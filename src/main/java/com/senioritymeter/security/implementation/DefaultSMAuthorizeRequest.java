@@ -1,6 +1,6 @@
-package com.opensourcelibrary.security.implementation;
+package com.senioritymeter.security.implementation;
 
-import com.opensourcelibrary.security.gateway.SMAuthorizeRequest;
+import com.senioritymeter.security.gateway.SMAuthorizeRequest;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.stereotype.Component;

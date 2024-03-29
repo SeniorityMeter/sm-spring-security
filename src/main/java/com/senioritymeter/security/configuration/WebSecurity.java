@@ -1,8 +1,8 @@
-package com.opensourcelibrary.security.configuration;
+package com.senioritymeter.security.configuration;
 
-import com.opensourcelibrary.security.gateway.SMAuthorizeRequest;
-import com.opensourcelibrary.security.gateway.SMCorsConfiguration;
-import com.opensourcelibrary.security.gateway.SMPasswordEncoder;
+import com.senioritymeter.security.gateway.SMAuthorizeRequest;
+import com.senioritymeter.security.gateway.SMCorsConfiguration;
+import com.senioritymeter.security.gateway.SMPasswordEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

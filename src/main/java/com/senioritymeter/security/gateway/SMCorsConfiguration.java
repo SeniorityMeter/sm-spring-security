@@ -1,4 +1,4 @@
-package com.opensourcelibrary.security.gateway;
+package com.senioritymeter.security.gateway;
 
 import java.util.List;
 

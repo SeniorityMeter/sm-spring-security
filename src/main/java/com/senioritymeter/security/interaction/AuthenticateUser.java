@@ -1,4 +1,4 @@
-package com.opensourcelibrary.security.interaction;
+package com.senioritymeter.security.interaction;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,4 +1,4 @@
-package com.opensourcelibrary.security.exception;
+package com.senioritymeter.security.exception;
 
 public class SecurityException extends RuntimeException {
 

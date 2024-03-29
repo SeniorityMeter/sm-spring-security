@@ -1,4 +1,4 @@
-package com.opensourcelibrary.security.interaction;
+package com.senioritymeter.security.interaction;
 
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;

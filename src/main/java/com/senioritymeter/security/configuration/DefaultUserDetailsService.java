@@ -1,6 +1,6 @@
-package com.opensourcelibrary.security.configuration;
+package com.senioritymeter.security.configuration;
 
-import com.opensourcelibrary.security.gateway.SMUserDetails;
+import com.senioritymeter.security.gateway.SMUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
