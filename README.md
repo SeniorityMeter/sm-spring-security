@@ -87,7 +87,6 @@ ___
 private final GenerateToken generateToken;
 
 final var tokenInput = Input.builder()
-    .issuer("issuer")
     .subject("username")
     .expiresAt(Instant.now().plusSeconds(3600))
     .build();
