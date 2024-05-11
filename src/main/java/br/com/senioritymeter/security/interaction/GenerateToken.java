@@ -1,8 +1,8 @@
-package com.senioritymeter.security.interaction;
+package br.com.senioritymeter.security.interaction;
 
+import br.com.senioritymeter.security.valueobject.Token;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.senioritymeter.security.valueobject.Token;
 import java.time.Instant;
 import lombok.Builder;
 import lombok.Data;

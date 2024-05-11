@@ -1,10 +1,11 @@
-package com.senioritymeter.security.configuration;
+package br.com.senioritymeter.security.configuration;
 
-import com.senioritymeter.security.gateway.SMUserDetails;
-import com.senioritymeter.security.utility.ValidateToken;
+import br.com.senioritymeter.security.gateway.SMUserDetails;
+import br.com.senioritymeter.security.utility.ValidateToken;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import java.io.IOException;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,9 +20,9 @@ public class FilterToken extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(
-      final HttpServletRequest request,
-      final HttpServletResponse response,
-      final FilterChain filterChain)
+      @NonNull final HttpServletRequest request,
+      @NonNull final HttpServletResponse response,
+      @NonNull final FilterChain filterChain)
       throws ServletException, IOException {
 
     var authorizationHeader = request.getHeader("Authorization");
@@ -30,10 +31,10 @@ public class FilterToken extends OncePerRequestFilter {
       var token = authorizationHeader.replace("Bearer ", "");
       var subject = this.validateToken.getSubject(token);
 
-      var userDetails = this.userDetails.loadUserDetails(subject);
+      var userDetail = this.userDetails.loadUserDetails(subject);
 
       var authentication =
-          new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+          new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities());
 
       SecurityContextHolder.getContext().setAuthentication(authentication);
     }

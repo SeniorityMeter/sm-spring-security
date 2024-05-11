@@ -14,7 +14,7 @@ ___
 ```xml
 <dependencies>
     <dependency>
-        <groupId>com.senioritymeter.spring</groupId>
+        <groupId>br.com.senioritymeter</groupId>
         <artifactId>security</artifactId>
         <version>1.0.0</version>
     </dependency>
@@ -87,6 +87,7 @@ ___
 private final GenerateToken generateToken;
 
 final var tokenInput = Input.builder()
+    .issuer("issuer")
     .subject("username")
     .expiresAt(Instant.now().plusSeconds(3600))
     .build();

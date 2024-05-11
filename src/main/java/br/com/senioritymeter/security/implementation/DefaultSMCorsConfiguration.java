@@ -1,6 +1,6 @@
-package com.senioritymeter.security.implementation;
+package br.com.senioritymeter.security.implementation;
 
-import com.senioritymeter.security.gateway.SMCorsConfiguration;
+import br.com.senioritymeter.security.gateway.SMCorsConfiguration;
 import java.util.List;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.senioritymeter.security.valueobject;
+package br.com.senioritymeter.security.valueobject;
 
 import java.time.Instant;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.senioritymeter.security.gateway;
+package br.com.senioritymeter.security.gateway;
 
 import org.springframework.security.core.userdetails.UserDetails;
 

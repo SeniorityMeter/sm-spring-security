@@ -1,5 +1,6 @@
-package com.senioritymeter.security.utility;
+package br.com.senioritymeter.security.utility;
 
+import br.com.senioritymeter.security.interaction.GenerateToken;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +14,7 @@ public class ValidateToken {
 
   public String getSubject(String token) {
     return JWT.require(Algorithm.HMAC512(secret))
-        .withIssuer("Users")
+        .withIssuer(GenerateToken.OSL_SECURITY_ISSUER)
         .build()
         .verify(token)
         .getSubject();
