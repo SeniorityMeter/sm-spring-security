@@ -9,7 +9,24 @@ This library is a simple security library for Spring Boot applications. It provi
 ___
 
 ### How to use
-#### 1. Add the following dependency and repository to your `pom.xml` file:
+#### 1. Add the following parent to your `pom.xml` file:
+
+```xml
+<parent>
+    <groupId>br.com.senioritymeter</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0.0</version>
+</parent>
+```
+___
+
+#### 2. add scanBasePackages to your SpringBootApplication
+```java
+@SpringBootApplication(scanBasePackages = {"br.com.senioritymeter", "your.package.name.here"})
+```
+___
+
+#### 3. Add the following dependency and repository to your `pom.xml` file:
 
 ```xml
 <dependencies>
@@ -22,7 +39,7 @@ ___
 ```
 ___
 
-#### 2. Add the following properties to your `application.yaml` file:
+#### 4. Add the following properties to your `application.yaml` file:
 
 ```yaml
 spring:
@@ -32,7 +49,7 @@ spring:
 ```
 ___
 
-#### 3. Configurations mandatory for the library to work:
+#### 5. Configurations mandatory for the library to work:
 
 ##### a - Save your user encoding the password with the `PasswordEncoder`:
 
@@ -64,7 +81,7 @@ public class SMUserDetailsImpl implements SMUserDetails {
 
 ___
 
-#### 4. Miscellaneous configurations:
+#### 6. Miscellaneous configurations:
 
 ##### a - Provide authorization requests with implements the `SMAuthorizeRequest` interface
 ##### b - Provide cors configuration with implements the `SMCorsConfiguration` interface
@@ -72,7 +89,7 @@ ___
 
 ___
 
-#### 5. Use the `AuthenticateUser` bean to authenticate the user:
+#### 7. Use the `AuthenticateUser` bean to authenticate the user:
 
 ```java
 private final AuthenticateUser authenticateUser;
@@ -81,7 +98,7 @@ authenticateUser.authenticate("username", "password");
 ```
 ___
 
-#### 6. Use the `GenerateToken` bean to generate a token:
+#### 8. Use the `GenerateToken` bean to generate a token:
 
 ```java
 private final GenerateToken generateToken;
@@ -95,7 +112,7 @@ final var token = generateToken.generateToken(tokenInput);
 ```
 ___
 
-#### 7. Use the `LoggedUser` static to get the logged user:
+#### 9. Use the `LoggedUser` static to get the logged user:
 
 ```java
 final var username = LoggedUser.getUsername();
