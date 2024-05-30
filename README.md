@@ -4,7 +4,7 @@
 ## Spring Security
 
 ### Description
-This library is a simple security library for Spring Boot applications. It provides a simple configuration of provides authentication for your applications. 
+This library is a simple security SDK for Spring Boot applications. It provides a simple configuration of provides security for your applications. 
 
 ___
 
