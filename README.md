@@ -4,7 +4,7 @@
 ## Spring Security
 
 ### Description
-This library is a simple security SDK for Spring Boot applications. It provides a simple configuration of provides security for your applications. 
+This is a simple security SDK for Spring Boot applications. It provides a simple configuration of provides security for your applications. 
 
 ___
 
@@ -15,7 +15,7 @@ ___
 <parent>
     <groupId>br.com.senioritymeter</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </parent>
 ```
 ___
@@ -33,7 +33,7 @@ ___
     <dependency>
         <groupId>br.com.senioritymeter</groupId>
         <artifactId>security</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </dependency>
 </dependencies>
 ```
@@ -54,7 +54,7 @@ ___
 ##### a - Save your user encoding the password with the `PasswordEncoder`:
 
 ```java
-private final SMPasswordEncoder passwordEncoder;
+private final PasswordEncoder passwordEncoder;
 
 passwordEncoder.encode(password);
 ```
