@@ -15,7 +15,7 @@ ___
 <parent>
     <groupId>br.com.senioritymeter</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
 </parent>
 ```
 ___
@@ -33,7 +33,7 @@ ___
     <dependency>
         <groupId>br.com.senioritymeter</groupId>
         <artifactId>security</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </dependency>
 </dependencies>
 ```
