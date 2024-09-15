@@ -60,9 +60,9 @@ private final PasswordEncoder passwordEncoder;
 passwordEncoder.encode(password);
 ```
 
-##### b - Implement the `SMUserDetails` interface:
+##### b - Implement the `GetUserDetails` interface:
 ```java
-public class SMUserDetailsImpl implements SMUserDetails {
+public class GetUserDetailsImpl implements GetUserDetails {
   private final UserRepository userRepository; // 
 
   @Override
@@ -84,9 +84,9 @@ ___
 
 #### 6. Miscellaneous configurations:
 
-##### a - Provide authorization requests with implements the `SMAuthorizeRequest` interface
-##### b - Provide cors configuration with implements the `SMCorsConfiguration` interface
-##### c - Provide the password encoder with implements the `SMPasswordEncoder` interface
+##### a - Provide authorization requests with implements the `AllAuthorizeRequest` interface
+##### b - Provide cors configuration with implements the `AllCorsConfiguration` interface
+##### c - Provide the password encoder with implements the `GetPasswordEncoder` interface
 
 ___
 
@@ -99,22 +99,22 @@ authenticateUser.authenticate("username", "password");
 ```
 ___
 
-#### 8. Use the `GenerateToken` bean to generate a token:
+#### 8. Use the `GetToken` bean to generate a token:
 
 ```java
-private final GenerateToken generateToken;
+private final GetToken getToken;
 
-final var tokenInput = Input.builder()
+final var input = GetToken.Input.builder()
     .subject("username")
     .expiresAt(Instant.now().plusSeconds(3600))
     .build();
 
-final var token = generateToken.generateToken(tokenInput);
+final var token = getToken.execute(input);
 ```
 ___
 
-#### 9. Use the `LoggedUser` static to get the logged user:
+#### 9. Use the `GetAuthenticatedUsername` static to get the logged user:
 
 ```java
-final var username = LoggedUser.getUsername();
+final var username = GetAuthenticatedUsername.execute();
 ```
