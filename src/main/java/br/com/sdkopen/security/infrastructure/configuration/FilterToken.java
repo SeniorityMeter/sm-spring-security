@@ -1,9 +1,10 @@
-package br.com.senioritymeter.security.configuration;
+package br.com.sdkopen.security.infrastructure.configuration;
 
-import br.com.senioritymeter.security.gateway.SMUserDetails;
-import br.com.senioritymeter.security.utility.ValidateToken;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
+import br.com.sdkopen.security.application.implementable.GetUserDetails;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @RequiredArgsConstructor
 public class FilterToken extends OncePerRequestFilter {
   private final ValidateToken validateToken;
-  private final SMUserDetails userDetails;
+  private final GetUserDetails getUserDetails;
 
   @Override
   protected void doFilterInternal(
@@ -30,8 +31,7 @@ public class FilterToken extends OncePerRequestFilter {
     if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
       var token = authorizationHeader.replace("Bearer ", "");
       var subject = this.validateToken.getSubject(token);
-
-      var userDetail = this.userDetails.loadUserDetails(subject);
+      var userDetail = this.getUserDetails.execute(subject);
 
       var authentication =
           new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities());

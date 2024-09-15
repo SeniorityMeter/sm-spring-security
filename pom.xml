@@ -4,18 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>br.com.senioritymeter</groupId>
+        <groupId>br.com.sdkopen</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.3</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>security</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>A simple security SDK for Spring Boot applications.</description>
-    <url>https://github.com/SeniorityMeter/sm-spring-security</url>
+    <url>https://github.com/sdkopen/sdkopen-spring-security</url>
 
     <licenses>
         <license>
@@ -32,9 +32,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/SeniorityMeter/sm-spring-security.git</connection>
-        <developerConnection>scm:git:ssh://github.com/SeniorityMeter/sm-spring-security.git</developerConnection>
-        <url>https://github.com/SeniorityMeter/sm-spring-security/tree/master</url>
+        <connection>scm:git:git://github.com/sdkopen/sdkopen-spring-security.git</connection>
+        <developerConnection>scm:git:ssh://github.com/sdkopen/sdkopen-spring-security.git</developerConnection>
+        <url>https://github.com/sdkopen/sdkopen-spring-security/tree/master</url>
     </scm>
 
     <dependencies>
@@ -55,25 +55,38 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.5.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -100,52 +113,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.graalvm.buildtools</groupId>
-                <artifactId>native-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>maven-central</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.central</groupId>
-                        <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>0.5.0</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <publishingServerId>release</publishingServerId>
-                            <tokenAuth>true</tokenAuth>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.2.4</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                                <configuration>
-                                    <gpgArguments>
-                                        <arg>--pinentry-mode</arg>
-                                        <arg>loopback</arg>
-                                    </gpgArguments>
-                                    <serverId>maven-central</serverId>
-                                    <keyname>${gpg.keyname}</keyname>
-                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>

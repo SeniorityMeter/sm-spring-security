@@ -1,8 +1,8 @@
-package br.com.senioritymeter.security.gateway;
+package br.com.sdkopen.security.application.implementable;
 
 import java.util.List;
 
-public interface SMCorsConfiguration {
+public interface AllCorsConfiguration {
   List<String> allowOrigins();
 
   List<String> allowMethods();

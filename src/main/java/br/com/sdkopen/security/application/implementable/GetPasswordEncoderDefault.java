@@ -1,15 +1,14 @@
-package br.com.senioritymeter.security.implementation;
+package br.com.sdkopen.security.application.implementable;
 
-import br.com.senioritymeter.security.gateway.SMPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DefaultSMPasswordEncoder implements SMPasswordEncoder {
+public class GetPasswordEncoderDefault implements GetPasswordEncoder {
 
   @Override
-  public PasswordEncoder get() {
+  public PasswordEncoder execute() {
     return new BCryptPasswordEncoder();
   }
 }

@@ -1,11 +1,10 @@
-package br.com.senioritymeter.security.implementation;
+package br.com.sdkopen.security.application.implementable;
 
-import br.com.senioritymeter.security.gateway.SMCorsConfiguration;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DefaultSMCorsConfiguration implements SMCorsConfiguration {
+public class AllCorsConfigurationDefault implements AllCorsConfiguration {
 
   @Override
   public List<String> allowOrigins() {

@@ -1,5 +1,6 @@
-package br.com.senioritymeter.security.interaction;
+package br.com.sdkopen.security.application.usecase;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,8 +11,8 @@ import org.springframework.stereotype.Component;
 public class AuthenticateUser {
   private final AuthenticationManager authenticationManager;
 
-  public void authenticate(String email, String password) {
-    var auth = new UsernamePasswordAuthenticationToken(email, password);
+  public void authenticate(@NonNull String username, @NonNull String password) {
+    var auth = new UsernamePasswordAuthenticationToken(username, password);
 
     this.authenticationManager.authenticate(auth);
   }
