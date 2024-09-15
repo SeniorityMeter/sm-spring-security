@@ -18,6 +18,8 @@ jobs:
           java-version: '21'
           cache: maven
       - name: Generate new GPG key
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: |
           cat > gen-key-script <<-EOF
           %no-protection
@@ -41,5 +43,6 @@ jobs:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
           GPG_KEY_ID: ${{ env.GPG_KEY_ID }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: |
-          mvn deploy -Dgpg.keyname=$GPG_KEY_ID --settings .github/maven-settings.xml
+          mvn deploy -Dgpg.keyname=$GPG_KEY_ID -Dgpg.passphrase=$GPG_PASSPHRASE --settings .github/maven-settings.xml
